@@ -29,7 +29,17 @@ jobs:
         working-directory: ./01_exercicis_javascript_basics
 
       # Paso 4: Ejecutar los tests con Vitest
+      - name: Run Vitest testsjson
+        run: npm run testjson 
+        working-directory: ./01_exercicis_javascript_basics
+
+      # Paso 5: Mostrar el resultado del evaluador
+      - name: Run evaluador
+        run: cat resultTest | node ../evaluador.js
+        working-directory: ./01_exercicis_javascript_basics
+
+     # Paso 6: Ejecutar los tests con Vitest para que fallen
       - name: Run Vitest tests
-        run: npm run test  # Asegúrate de tener el script 'test:ci' configurado en package.json
+        run: npm run test
         working-directory: ./01_exercicis_javascript_basics
 
