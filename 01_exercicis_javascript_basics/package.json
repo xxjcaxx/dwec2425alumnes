@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "test": "vitest",
+    "testjson": "vitest run --reporter=json --outputFile.json=./resultTest.json",
+    "coverage": "vitest run --coverage"
+  },
+  "devDependencies": {
+    "vitest": "^2.0.5"
+  }
+}
