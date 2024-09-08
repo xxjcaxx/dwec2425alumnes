@@ -24,7 +24,9 @@ describe("Javascript Básico", function () {
         expect(ex1.createArraySomeTypes()[8] instanceof Function).toBe(true);
       });
       test("1+1", function () {
-
+        expect(1+1).toBe(2);
+      });
+      test("1+1", function () {
         expect(1+1).toBe(2);
       });
     });
