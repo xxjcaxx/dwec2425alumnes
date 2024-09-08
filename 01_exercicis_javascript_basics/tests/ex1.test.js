@@ -23,5 +23,9 @@ describe("Javascript Básico", function () {
         expect(isNaN(ex1.createArraySomeTypes(7))).toBe(true);
         expect(ex1.createArraySomeTypes()[8] instanceof Function).toBe(true);
       });
+      test("1+1", function () {
+
+        expect(1+1).toBe(2);
+      });
     });
 });
