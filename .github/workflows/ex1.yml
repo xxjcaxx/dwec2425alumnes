@@ -36,7 +36,7 @@ jobs:
 
       # Paso 5: Mostrar el resultado del evaluador
       - name: Run evaluador
-        run: cat resultTest | node ../evaluador.js
+        run: cat resultTest.json | node ../evaluador.js
         working-directory: ./01_exercicis_javascript_basics
 
      # Paso 6: Ejecutar los tests con Vitest para que fallen
