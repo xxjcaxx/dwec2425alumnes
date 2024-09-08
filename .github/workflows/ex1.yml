@@ -32,6 +32,7 @@ jobs:
       - name: Run Vitest testsjson
         run: npm run testjson 
         working-directory: ./01_exercicis_javascript_basics
+        continue-on-error: true
 
       # Paso 5: Mostrar el resultado del evaluador
       - name: Run evaluador
