@@ -23,9 +23,15 @@ describe("Javascript Básico", function () {
         expect(isNaN(ex1.createArraySomeTypes(7))).toBe(true);
         expect(ex1.createArraySomeTypes()[8] instanceof Function).toBe(true);
       });
-      test("1+1", function () {
-
-        expect(1+1).toBe(2);
+      test("Debe retornar un array de funciones que retornen 0,1,2", function () {
+        let resultados = ex1.variables();
+        expect(Array.isArray(resultados)).toBe(true);
+        resultados.forEach((elemento) => {
+          expect(typeof elemento).toBe('function');
+        });
+        expect(resultados[0]()).toBe(0);
+        expect(resultados[1]()).toBe(1);
+        expect(resultados[2]()).toBe(2);
       });
     });
 });
