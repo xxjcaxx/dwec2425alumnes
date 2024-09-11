@@ -15,8 +15,3 @@ export function variables() {
     });
   }
 
-  return resultados;
-
-  /* Arregla aquesta funció per a que el resultat siga un array de funcions que retornen 0,1,2 com s'espera */
-
-}

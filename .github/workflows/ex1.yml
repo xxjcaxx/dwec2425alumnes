@@ -1,0 +1,46 @@
+name: Run Vitest on Pull Request
+
+on:
+  pull_request:
+    branches:
+      - master  # Se ejecuta cuando se abre un PR hacia la rama master
+    paths:
+      - '01_exercicis_javascript_basics/**'  # Solo ejecuta cuando hay un PR que cambia algo en 'ejercicio-1'
+
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Paso 1: Chequear el código del PR
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
+      # Paso 2: Configurar Node.js para instalar dependencias
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'  # Puedes cambiar a la versión de Node.js que uses
+
+      # Paso 3: Instalar dependencias usando npm
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./01_exercicis_javascript_basics
+
+      # Paso 4: Ejecutar los tests con Vitest
+      - name: Run Vitest testsjson
+        run: npm run testjson 
+        working-directory: ./01_exercicis_javascript_basics
+        continue-on-error: true
+
+      # Paso 5: Mostrar el resultado del evaluador
+      - name: Run evaluador
+        run: cat resultTest.json | node ../evaluador.js
+        working-directory: ./01_exercicis_javascript_basics
+
+     # Paso 6: Ejecutar los tests con Vitest para que fallen
+      - name: Run Vitest tests
+        run: npm run test
+        working-directory: ./01_exercicis_javascript_basics
+
