@@ -6,6 +6,7 @@ on:
       - master  # Se ejecuta cuando se abre un PR hacia la rama master
     paths:
       - '01_exercicis_javascript_basics/**'  # Solo ejecuta cuando hay un PR que cambia algo en 'ejercicio-1'
+      - '!02_exercicis_arraysobjectes/**'  # Solo ejecuta cuando hay un PR que cambia algo en 'ejercicio-1'
 
 
 jobs:
