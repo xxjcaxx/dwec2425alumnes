@@ -1,12 +1,11 @@
-name: Run Vitest on Pull Request
+name: exercicis 2 Run Vitest on Pull Request 
 
 on:
   pull_request:
     branches:
       - master  # Se ejecuta cuando se abre un PR hacia la rama master
     paths:
-      - '01_exercicis_javascript_basics/**'  # Solo ejecuta cuando hay un PR que cambia algo en 'ejercicio-1'
-      - '!02_exercicis_arraysobjectes/**'  # Solo ejecuta cuando hay un PR que cambia algo en 'ejercicio-1'
+      - '02_exercicis_arraysobjectes/**'  # Solo ejecuta cuando hay un PR que cambia algo en 'ejercicio-1'
 
 
 jobs:
@@ -27,21 +26,21 @@ jobs:
       # Paso 3: Instalar dependencias usando npm
       - name: Install dependencies
         run: npm install
-        working-directory: ./01_exercicis_javascript_basics
+        working-directory: ./02_exercicis_arraysobjectes
 
       # Paso 4: Ejecutar los tests con Vitest
       - name: Run Vitest testsjson
         run: npm run testjson 
-        working-directory: ./01_exercicis_javascript_basics
+        working-directory: ./02_exercicis_arraysobjectes
         continue-on-error: true
 
       # Paso 5: Mostrar el resultado del evaluador
       - name: Run evaluador
         run: cat resultTest.json | node ../evaluador.js
-        working-directory: ./01_exercicis_javascript_basics
+        working-directory: ./02_exercicis_arraysobjectes
 
      # Paso 6: Ejecutar los tests con Vitest para que fallen
       - name: Run Vitest tests
         run: npm run test
-        working-directory: ./01_exercicis_javascript_basics
+        working-directory: ./02_exercicis_arraysobjectes
 
