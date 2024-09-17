@@ -12,7 +12,7 @@ function mostrarTestsFallidos(report) {
             failedTests+= assertion.status === 'failed' ? 1 : 0;
         });
     });
-    console.log(`Nota: ${failedTests/nTests} (${failedTests}/${nTests})`)
+    console.log(`Nota: ${(nTests-failedTests)/nTests} Fallos: (${failedTests}/${nTests})`)
   }
   
 // Leer el JSON desde la entrada estándar

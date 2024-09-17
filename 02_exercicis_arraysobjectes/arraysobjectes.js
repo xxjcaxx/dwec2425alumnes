@@ -34,7 +34,7 @@ export function extractData(data){
         { title: 'Sexe', field: 'sexe' },
       ]
     },  
-    ... 
+
 
     Volem extreure sols els objectes de dins de l'array 'fields' i d'aquests sols en interessa el 'title' i el 'field'
 
