@@ -40,6 +40,8 @@ export function extractData(data){
 
     El resultat de la funció serà un array d'objectes amb el title i el field. 
     */
+
+    return {}
 }
 
 export function removeBlankData(data){
