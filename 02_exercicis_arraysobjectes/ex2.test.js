@@ -1,4 +1,4 @@
-import { extractData, removeBlankData } from "./arraysobjectes";
+import { extractData, removeBlankData, empresa } from "./arraysobjectes";
 import { describe, expect, test } from "vitest";
 
 describe("Arrays i Objectes", function () {
@@ -79,5 +79,33 @@ describe("Arrays i Objectes", function () {
 
         ]);
 
+    });
+
+    test("obtenerEmpleadosConVariosProyectos deu obtindre una llista ordenada d'empleats amb varis projectes", function () {
+        const otraEmpresa = {
+            empleados: [
+              { nombre: 'Luis', proyectos: ['Proyecto X', 'Proyecto Y'] },
+              { nombre: 'Sofía', proyectos: ['Proyecto Y'] }
+            ],
+          };
+
+        expect(empresa.obtenerEmpleadosConVariosProyectos()).toEqual([
+            { nombre: 'Carlos', proyectos: ['Proyecto A', 'Proyecto B', 'Proyecto C'] },
+            { nombre: 'Javier', proyectos: ['Proyecto B', 'Proyecto C'] },
+        ]);
+        expect(empresa.obtenerEmpleadosConVariosProyectos.call(otraEmpresa)).toEqual([
+            { nombre: 'Luis', proyectos: ['Proyecto X', 'Proyecto Y'] },
+        ]);
+    });
+
+    test("obtenerEmpleadosDeProyectos deu obtindre una llista de projectes amb un atribut empleats que és una llista de noms", function () {
+        let proyectosCopy = structuredClone(empresa.proyectos);
+        let result = empresa.obtenerEmpleadosDeProyectos();
+        expect(result).toEqual([
+            { nombre: 'Proyecto A', descripcion: 'Desarrollo de software', empleados: ['Carlos','Ana'] },
+            { nombre: 'Proyecto B', descripcion: 'Diseño gráfico' , empleados: ['Carlos','Javier'] },
+            { nombre: 'Proyecto C', descripcion: 'Marketing digital' , empleados: ['Carlos','Javier']  }
+        ]);
+        expect(empresa.proyectos).toEqual(proyectosCopy); 
     });
 });

@@ -47,3 +47,28 @@ export function removeBlankData(data){
 Aquesta funció accepta un array d'objectes que poden ser molt diversos i elimina els clau-valor que tenen com a valor "", null o undefined.
 */
 }
+
+
+export const empresa = {
+  empleados: [
+    { nombre: 'Carlos', proyectos: ['Proyecto A', 'Proyecto B', 'Proyecto C'] },
+    { nombre: 'Ana', proyectos: ['Proyecto A'] },
+    { nombre: 'Javier', proyectos: ['Proyecto B', 'Proyecto C'] },
+    { nombre: 'Lucía', proyectos: [] }
+  ],
+  proyectos: [
+    { nombre: 'Proyecto A', descripcion: 'Desarrollo de software' },
+    { nombre: 'Proyecto B', descripcion: 'Diseño gráfico' },
+    { nombre: 'Proyecto C', descripcion: 'Marketing digital' }
+  ],
+  // obtenerEmpleadosConVariosProyectos: 
+     /* Aquest mètode  ens retornarà un array d'empleats amb més d'un projecte ordenats per quantitat de projectes 
+     El métode s'ha de poder executar amb els empleats de l'altra empresa utilitzant call()
+     */
+
+  //obtenerEmpleadosDeProyectos: 
+  /*
+     Aquest mètode ens retornarà un array de proyectes amb un atribut "empleados" que serà un array de noms dels empleats. 
+   */
+};
+
