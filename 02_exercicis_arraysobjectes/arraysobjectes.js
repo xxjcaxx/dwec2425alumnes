@@ -72,3 +72,4 @@ export const empresa = {
    */
 };
 
+//////// Exercici2 castillo
