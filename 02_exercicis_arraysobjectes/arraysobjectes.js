@@ -40,12 +40,16 @@ export function extractData(data){
 
     El resultat de la funció serà un array d'objectes amb el title i el field. 
     */
+   return data.flatMap((objecte => objecte.fields
+    .map(field => ({title: field.title, field: field.field}))));
 }
 
 export function removeBlankData(data){
 /*
 Aquesta funció accepta un array d'objectes que poden ser molt diversos i elimina els clau-valor que tenen com a valor "", null o undefined.
 */
+  return data.map((objecte => Object.fromEntries(Object.entries(objecte)
+  .filter(([clau, valor]) => valor !== "" && valor !== null && valor !== undefined))));
 }
 
 
@@ -65,10 +69,22 @@ export const empresa = {
      /* Aquest mètode  ens retornarà un array d'empleats amb més d'un projecte ordenats per quantitat de projectes 
      El métode s'ha de poder executar amb els empleats de l'altra empresa utilitzant call()
      */
+     obtenerEmpleadosConVariosProyectos() {
+      return this.empleados.filter(empleado => empleado.proyectos.length > 1)
+      .sort((valor1, valor2) => valor2.proyectos.length-valor1.proyectos.length);
+     },
 
   //obtenerEmpleadosDeProyectos: 
   /*
      Aquest mètode ens retornarà un array de proyectes amb un atribut "empleados" que serà un array de noms dels empleats. 
    */
+     obtenerEmpleadosDeProyectos(){
+      return this.proyectos.map(o => ({nombre: o.nombre, 
+        descripcion: o.descripcion,
+        empleados:this.empleados
+        .filter(empleado => empleado.proyectos
+        .includes(o.nombre)).map(e => e.nombre)}) 
+      )
+     }
 };
 
