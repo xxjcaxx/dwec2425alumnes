@@ -40,6 +40,10 @@ export function extractData(data){
 
     El resultat de la funció serà un array d'objectes amb el title i el field. 
     */
+
+    return data
+        .flatMap(o => o.fields)
+        .map(({ title, field }) => ({ title, field }));
 }
 
 export function removeBlankData(data){
