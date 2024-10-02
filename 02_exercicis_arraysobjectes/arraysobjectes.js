@@ -1,7 +1,8 @@
 // Intenteu resoldre aquests exercicis sense utilitzar bucles com for, foreach, o for..of
 
-export function extractData(data){
-    /*
+export function extractData(data) {
+  return data.flatMap((section) => section.fields.map((field) => ({ title: field.title, field: field.field })));
+  /*
     Tenim un array d'objectes amb aquesta estructura de l'exemple:
     [
      {
@@ -42,33 +43,47 @@ export function extractData(data){
     */
 }
 
-export function removeBlankData(data){
-/*
+export function removeBlankData(data) {
+  return data.map((obj) => {
+    return Object.fromEntries(
+      Object.entries(obj).filter(([key, value]) => value !== '' && value !== null && value !== undefined)
+    );
+  });
+  /*
 Aquesta funció accepta un array d'objectes que poden ser molt diversos i elimina els clau-valor que tenen com a valor "", null o undefined.
 */
 }
-
 
 export const empresa = {
   empleados: [
     { nombre: 'Carlos', proyectos: ['Proyecto A', 'Proyecto B', 'Proyecto C'] },
     { nombre: 'Ana', proyectos: ['Proyecto A'] },
     { nombre: 'Javier', proyectos: ['Proyecto B', 'Proyecto C'] },
-    { nombre: 'Lucía', proyectos: [] }
+    { nombre: 'Lucía', proyectos: [] },
   ],
   proyectos: [
     { nombre: 'Proyecto A', descripcion: 'Desarrollo de software' },
     { nombre: 'Proyecto B', descripcion: 'Diseño gráfico' },
-    { nombre: 'Proyecto C', descripcion: 'Marketing digital' }
+    { nombre: 'Proyecto C', descripcion: 'Marketing digital' },
   ],
-  // obtenerEmpleadosConVariosProyectos: 
-     /* Aquest mètode  ens retornarà un array d'empleats amb més d'un projecte ordenats per quantitat de projectes 
+  obtenerEmpleadosConVariosProyectos: function () {
+    return this.empleados
+      .filter((empleado) => empleado.proyectos.length > 1)
+      .sort((a, b) => b.proyectos.length - a.proyectos.length);
+  },
+  /* Aquest mètode  ens retornarà un array d'empleats amb més d'un projecte ordenats per quantitat de projectes 
      El métode s'ha de poder executar amb els empleats de l'altra empresa utilitzant call()
      */
 
-  //obtenerEmpleadosDeProyectos: 
+  obtenerEmpleadosDeProyectos: function () {
+    return this.proyectos.map((proyecto) => {
+      const empleadosAsignados = this.empleados
+        .filter((empleado) => empleado.proyectos.includes(proyecto.nombre))
+        .map((empleado) => empleado.nombre);
+      return { ...proyecto, empleados: empleadosAsignados };
+    });
+  },
   /*
      Aquest mètode ens retornarà un array de proyectes amb un atribut "empleados" que serà un array de noms dels empleats. 
    */
 };
-
